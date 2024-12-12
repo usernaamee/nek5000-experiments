@@ -3,3 +3,5 @@
 **/SESSION.NAME
 **/build.log
 **/makefile
+**/*.ma2
+**/*.re2
