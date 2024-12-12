@@ -1,0 +1,23 @@
+#
+# nek parameter file
+# Non-dimensional case
+# - general section
+#   - dt = scaled by U/L
+# - velocity section
+#   - density = 1.0
+#   - viscosity = -Re or 1/Re
+# - temperature section
+#   - rhoCp = 1.0
+#   - conductivity = -Pe or 1/Pe
+[GENERAL]
+dt = 1.0e-2
+numsteps = 15000
+writeInterval = 100
+
+[VELOCITY]
+density = 1.0
+viscosity = -150
+
+[TEMPERATURE]
+rhoCp = 1.0
+conductivity = -120

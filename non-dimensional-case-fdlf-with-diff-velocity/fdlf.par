@@ -1,0 +1,20 @@
+#
+# nek parameter file
+#
+[GENERAL]
+dt = 1e-4
+numsteps = 100000
+writeInterval = 1000
+
+userParam01 = 1.0     #non-dimensional channel height
+userParam02 = 1.0     #non-dimensional mean velocity
+userParam03 = 0.0000417 #non-dimensional heat flux
+userParam04 = 0.0     #non-dimensional inlet temperature
+
+[VELOCITY]
+density = 1.0
+viscosity = -30000.0
+
+[TEMPERATURE]
+rhoCp = 1.0
+conductivity = -24000.0

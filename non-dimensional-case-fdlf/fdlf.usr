@@ -1,0 +1,80 @@
+c-----------------------------------------------------------------------
+c  nek5000 user-file template
+c
+c  user specified routines:
+c     - uservp  : variable properties
+c     - userf   : local acceleration term for fluid
+c     - userq   : local source term for scalars
+c     - userbc  : boundary conditions
+c     - useric  : initial conditions
+c     - userchk : general purpose routine for checking errors etc.
+c     - userqtl : thermal divergence for lowMach number flows 
+c     - usrdat  : modify element vertices 
+c     - usrdat2 : modify mesh coordinates
+c     - usrdat3 : general purpose routine for initialization
+c     
+c-----------------------------------------------------------------------
+
+      subroutine userbc(ix,iy,iz,iside,eg) ! set up boundary conditions
+
+      implicit none
+      include 'SIZE'
+      include 'TOTAL'
+      include 'NEKUSE'
+
+      integer ix,iy,iz,iside,eg
+      real H,um,qpp,Tin,con,term,L
+
+      L    = 0.005
+      H    = 0.01
+      um   = 0.5
+      qpp  = 300.0
+      Tin  = 10.0
+      con  = 0.025
+      term = qpp*H/(2*con)
+      
+      ux   = ( um*3./2.*(1-4.*(y*L/H)**2) ) / um
+      uy   = 0.0
+      uz   = 0.0
+c      temp = ( term*(3.*(y*L/H)**2-2.*(y*L/H)**4-39./280.)) / 50.0
+      temp = 0.0
+      flux = 0.01
+
+      return
+      end
+
+c-----------------------------------------------------------------------
+
+      subroutine useric(ix,iy,iz,ieg)
+      implicit none
+      include 'SIZE'
+      include 'TOTAL'
+      include 'NEKUSE'
+      
+      integer ix,iy,iz,ieg
+      real um,Tin
+      
+      um = uparam(2)
+      Tin = uparam(4)
+      
+      ux   = 1.0
+      uy   = 0.0
+      uz   = 0.0
+      temp = 0.0
+      
+      return
+      end
+c-----------------------------------------------------------------------
+      subroutine userqtl ! Set thermal divergence
+      implicit none
+
+      call userqtl_scig 
+
+      return
+      end
+
+c-----------------------------------------------------------------------
+      subroutine userq
+      implicit none
+      return
+      end
