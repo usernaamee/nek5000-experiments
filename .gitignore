@@ -1,5 +1,5 @@
-.usr
-.state
-SESSION.NAME
-build.log
-makefile
+**/.usr
+**/.state
+**/SESSION.NAME
+**/build.log
+**/makefile
